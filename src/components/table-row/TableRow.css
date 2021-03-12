@@ -1,0 +1,66 @@
+.table-row{
+    border-bottom: 2px solid #5b5a631e;
+    display: grid;
+    grid-template-columns: 40px 280px 70px 100px 85px 50px;
+}
+.table-row span{
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.amount{
+    padding-left: 23px;
+}
+.amount-buttons{
+    display: flex;
+    justify-content: flex-start;
+}
+button{
+    cursor:pointer;
+}
+.decrease, .increase, .delete-button{
+    border-width:0px;
+    font-size: 20px;
+    width:20px;
+    height:19px;
+    font-weight: bold;
+}
+button, button:active, button:target{
+    border-radius: 0px;
+    outline: none;
+    color: white;
+    background-color: #9f94e3;
+    margin-right: 2px;
+}
+button:active{
+    border-width:2px;
+}
+.decrease:active{
+    padding-left: 4px;
+}
+.increase:active{
+    padding-left: 2px;
+}
+.delete-button:active{
+    padding-left: 4px;
+}
+.decrease{
+    display: block;
+    padding-left: 5px;
+    line-height: 5%;
+}
+.decrease:hover, .increase:hover, .delete-button:hover{
+    text-shadow: 0 0 2px white;
+}
+.increase{
+line-height: 10%;
+padding-left: 4px;
+}
+.delete-button{
+    height:19px;
+    width:57px;
+    line-height: 10%;
+    font-size: 11px;
+    font-weight: 600;
+    padding-left: 6px;
+}
