@@ -5,6 +5,7 @@
     font-family: 'Montserrat', sans-serif;
 }
 .title{
+    
 }
 .table-row span{
     font-size: 12px;
@@ -60,7 +61,7 @@ button:active{
     padding-left: 6px;
     border-width: 0px;
     color: rgba(255, 255, 255, 0.404);
-    background-color: #9f94e356;
+    background-color: #9f94e349;
     text-shadow: none;
     transition: .2s ease;
 }

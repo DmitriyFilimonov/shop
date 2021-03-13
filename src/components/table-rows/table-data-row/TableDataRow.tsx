@@ -5,6 +5,7 @@ interface TableDataRowProps {
     data: OrderPosition;
     decreaseHandler: (positionNumber: number) => void;
     increaseHandler: (positionNumber: number) => void;
+    deleteHandler:(positionNumber: number)=>void;
 }
 
 let availability: string;
@@ -16,6 +17,9 @@ function TableDataRow(props: TableDataRowProps) {
     }
     function increase() {
         props.increaseHandler(props.data.positionNumber - 1);
+    }
+    function deletePosition(){
+        props.deleteHandler(props.data.positionNumber-1);
     }
     props.data.positionAmount > 1 ? availability = "available" : availability = "blocked";
     return (
@@ -29,7 +33,7 @@ function TableDataRow(props: TableDataRowProps) {
                 <button className="increase" onClick={increase}>+</button>
             </span>
             <span>
-                <button className="delete-button">удалить</button>
+                <button className="delete-button" onClick={deletePosition}>удалить</button>
             </span>
         </div>
     )

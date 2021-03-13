@@ -26,12 +26,18 @@ const orderSource: Order = (function (): Order {
             },
             {
                 positionNumber: 3,
+                positionTitle: "Грокаем алгоритмы. Иллюстрированное пособие для программистов и любопытствующих",
+                positionAmount: 1,
+                positionPricePerOne: 799
+            },
+            {
+                positionNumber: 4,
                 positionTitle: "Набор маркеров Berlingo 4 цвета",
                 positionAmount: 5,
                 positionPricePerOne: 400
             }
         ],
-        getTotal: function(this:Order):number {
+        getTotal: function (this: Order): number {
             let result: number = 0;
             this.positions.map(p => {
                 result += p.positionPricePerOne * p.positionAmount;
@@ -43,14 +49,22 @@ const orderSource: Order = (function (): Order {
 function Checkout() {
 
     const [order, setOrder] = useState(Object.assign({}, orderSource));
-    
-    const decreaseHandler = (positionNumber:number) =>{
+
+    const decreaseHandler = (positionNumber: number) => {
         orderSource.positions[positionNumber].positionAmount--;
         setOrder(Object.assign({}, orderSource));
     }
 
-    const increaseHandler = (positionNumber:number) =>{
+    const increaseHandler = (positionNumber: number) => {
         orderSource.positions[positionNumber].positionAmount++;
+        setOrder(Object.assign({}, orderSource));
+    }
+
+    const deleteHandler = (positionNumber:number) => {
+        orderSource.positions.splice(positionNumber, 1);
+        for (let i=positionNumber; i<orderSource.positions.length; i++){
+            orderSource.positions[i].positionNumber--;
+        }
         setOrder(Object.assign({}, orderSource));
     }
 
@@ -68,10 +82,11 @@ function Checkout() {
                 <TableTitleRow></TableTitleRow>
                 {
                     order.positions.map(position =>
-                    <TableDataRow
-                    data={position}
-                    decreaseHandler={decreaseHandler}
-                    increaseHandler={increaseHandler}></TableDataRow>)
+                        <TableDataRow
+                            data={position}
+                            decreaseHandler={decreaseHandler}
+                            increaseHandler={increaseHandler}
+                            deleteHandler={deleteHandler}></TableDataRow>)
                 }
             </div>
             <div className="table-footer">
