@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Order } from '../interfaces/Order';
+import ModalProofDelete from '../modal-proof-delete/ModalProofDelete';
 import TableDataRow from '../table-rows/table-data-row/TableDataRow';
 import TableTitleRow from '../table-rows/table-title-row/TableTitleRow';
 import './Checkout.css';
@@ -46,9 +47,13 @@ const orderSource: Order = (function (): Order {
         }
     }
 })();
+
+let positionForDelete: number;
+
 function Checkout() {
 
     const [order, setOrder] = useState(Object.assign({}, orderSource));
+    const [modalVisibility, setModalVisibility] = useState("");
 
     const decreaseHandler = (positionNumber: number) => {
         orderSource.positions[positionNumber].positionAmount--;
@@ -60,12 +65,22 @@ function Checkout() {
         setOrder(Object.assign({}, orderSource));
     }
 
-    const deleteHandler = (positionNumber:number) => {
-        orderSource.positions.splice(positionNumber, 1);
-        for (let i=positionNumber; i<orderSource.positions.length; i++){
+    const deleteHandler = (positionNumber: number) => {
+        positionForDelete = positionNumber;
+        setModalVisibility("visible");
+    }
+
+    const proofedDeleteHandler = () => {
+        setModalVisibility("");
+        orderSource.positions.splice(positionForDelete, 1);
+        for (let i = positionForDelete; i < orderSource.positions.length; i++) {
             orderSource.positions[i].positionNumber--;
         }
         setOrder(Object.assign({}, orderSource));
+    }
+
+    const canceledDeleteHandler = () => {
+        setModalVisibility("");
     }
 
     return (
@@ -95,6 +110,10 @@ function Checkout() {
                     {order.getTotal()} руб.
                 </span>
             </div>
+            <ModalProofDelete
+                modalVisibility={modalVisibility}
+                deleteHandler={proofedDeleteHandler}
+                cancelDeleteHandler={canceledDeleteHandler}></ModalProofDelete>
         </div>
     )
 }
