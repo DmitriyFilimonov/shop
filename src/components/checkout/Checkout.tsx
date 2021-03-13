@@ -11,7 +11,7 @@ const orderSource: Order = (function (): Order {
     return {
         orderNumber: 132,
         address: "СПб, пр. Ленина, д. 3, кв. 8",
-        deliveryDate: "12/03/2021",
+        orderDate: (new Date).toLocaleDateString("en-GB"),
         positions: [
             {
                 positionNumber: 1,
@@ -89,7 +89,7 @@ function Checkout() {
                 <label>Заказ# {order.orderNumber}</label>
                 <div className="order-general-info">
                     <span><b>Адрес:</b> {order.address}</span>
-                    <span><b>Дата:</b> {order.deliveryDate}</span>
+                    <span><b>Дата заказа:</b> {order.orderDate}</span>
                 </div>
                 <label>Детали заказа:</label>
             </div>
