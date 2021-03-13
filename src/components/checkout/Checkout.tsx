@@ -1,37 +1,77 @@
-import React from 'react';
-import TableRow from '../table-row/TableRow';
+import React, { useState } from 'react';
+import { Order } from '../interfaces/Order';
+import TableDataRow from '../table-rows/table-data-row/TableDataRow';
+import TableTitleRow from '../table-rows/table-title-row/TableTitleRow';
 import './Checkout.css';
 
+
+
+const orderSource: Order = (function (): Order {
+    return {
+        orderNumber: 132,
+        address: "СПб, пр. Ленина, д. 3, кв. 8",
+        deliveryDate: "12/03/2021",
+        positions: [
+            {
+                positionNumber: 1,
+                positionTitle: "Head First HTML with CSS & XHTML",
+                positionAmount: 1,
+                positionPricePerOne: 1917
+            },
+            {
+                positionNumber: 2,
+                positionTitle: "Доска магнитно-маркерная Cactus CS-MBD-60X90 магнитно-маркерная лак белый 60x90см алюминиевая рама",
+                positionAmount: 1,
+                positionPricePerOne: 1499
+            },
+            {
+                positionNumber: 3,
+                positionTitle: "Набор маркеров Berlingo 4 цвета",
+                positionAmount: 5,
+                positionPricePerOne: 400
+            }
+        ],
+        getTotal: function(this:Order) {
+            let result: number = 0;
+            this.positions.map(p => {
+                result += p.positionPricePerOne * p.positionAmount;
+            });
+            return result;
+        }
+    }
+})();
 function Checkout() {
+
+    const [order, setOrder] = useState(Object.assign({}, orderSource));
+    
+    const decreaseHandler = (positionNumber:number) =>{
+        orderSource.positions[positionNumber].positionAmount--;
+        setOrder(Object.assign({}, orderSource));
+    }
+
     return (
         <div className="table">
             <div className="table-header">
-                <label>Заказ №132</label>
+                <label>Заказ {order.orderNumber}</label>
                 <div className="order-general-info">
-                    <span><b>Адрес:</b> СПб, пр. Ленина, д. 3, кв. 8</span>
-                    <span><b>Дата:</b> 12/03/2021</span>
+                    <span><b>Адрес:</b> {order.address}</span>
+                    <span><b>Дата:</b> {order.deliveryDate}</span>
                 </div>
-                <label>Детали заказа:</label> </div>
+                <label>Детали заказа:</label>
+            </div>
             <div className="table-body">
-                <div className="table-body-first-row">
-                    <span>#</span>
-                    <span>наименование</span>
-                    <span>кол-во</span>
-                    <span>цена за шт.</span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <TableRow></TableRow>
-                <TableRow></TableRow>
-                <TableRow></TableRow>
-                <TableRow></TableRow>
-                <TableRow></TableRow>
-                <TableRow></TableRow>
+                <TableTitleRow></TableTitleRow>
+                {
+                    order.positions.map(position =>
+                    <TableDataRow
+                    data={position}
+                    decreaseHandler={decreaseHandler}></TableDataRow>)
+                }
             </div>
             <div className="table-footer">
                 <span>
-                    <b>Сумма:</b>
-                    11198 руб.
+                    <b>Сумма: </b>
+                    {order.getTotal()} руб.
                 </span>
             </div>
         </div>

@@ -4,9 +4,20 @@
 }
 .table{
     margin:0 auto;
-    padding-top:20px;
+    padding-top:0px;
     width:650px;
     padding-left:0;
+    background-color: white;
+}
+.table-header, .table-body, .table-footer{
+    padding-right: 3px;
+}
+.table-header{
+    border-right: 2px solid #4EE647;
+    position: sticky;
+    top: 0px;
+    background-color: white;
+    padding-top: 20px;
 }
 .table *{
     margin-bottom:7px;
@@ -33,25 +44,12 @@
     display: flex;
     justify-content: space-between;
 }
-.table-header{
-    border-right: 2px solid #4EE647;
-}
 .table-footer{
     height:55px;
     border-left: 2px solid #4EE647;
     display: flex;
     align-items: flex-end;
 }
-.table-header, .table-body, .table-footer{
-    padding-right: 3px;
-}
 .table-body{
     padding-top:15px;
-}
-.table-body-first-row{
-    border-bottom: 2px solid #5b5a631e;
-    font-size: 13px;
-    font-weight: 500;
-    display: grid;
-    grid-template-columns: 40px 280px 70px 100px 85px 50px;
 }
