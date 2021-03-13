@@ -1,20 +1,23 @@
 import { OrderPosition } from '../../interfaces/OrderPosition';
 import '../TableRows.css';
 
-interface TableDataRowProps{
-    data:OrderPosition;
-    decreaseHandler:(positionNumber:number)=>void;
-    increaseHandler:(positionNumber:number)=>void;
+interface TableDataRowProps {
+    data: OrderPosition;
+    decreaseHandler: (positionNumber: number) => void;
+    increaseHandler: (positionNumber: number) => void;
 }
 
+let availability: string;
 
-function TableDataRow(props:TableDataRowProps) {
-    function decrease(){
-        props.decreaseHandler(props.data.positionNumber-1);
+function TableDataRow(props: TableDataRowProps) {
+    function decrease() {
+        if (props.data.positionAmount > 1)
+            props.decreaseHandler(props.data.positionNumber - 1);
     }
-    function increase(){
-        props.increaseHandler(props.data.positionNumber-1);
+    function increase() {
+        props.increaseHandler(props.data.positionNumber - 1);
     }
+    props.data.positionAmount > 1 ? availability = "available" : availability = "blocked";
     return (
         <div className="table-row">
             <span>{props.data.positionNumber}</span>
@@ -22,7 +25,7 @@ function TableDataRow(props:TableDataRowProps) {
             <span className="amount">{props.data.positionAmount}</span>
             <span>{props.data.positionPricePerOne}</span>
             <span className="amount-buttons">
-                <button className="decrease" onClick={decrease}>-</button>
+                <button className={"decrease " + (availability)} onClick={decrease}>-</button>
                 <button className="increase" onClick={increase}>+</button>
             </span>
             <span>

@@ -5,5 +5,5 @@ export interface Order{
     address:string;
     deliveryDate:string;
     positions:OrderPosition[];
-    getTotal:()=>{};
+    getTotal:()=>number;
 }

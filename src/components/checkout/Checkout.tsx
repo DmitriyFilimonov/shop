@@ -31,7 +31,7 @@ const orderSource: Order = (function (): Order {
                 positionPricePerOne: 400
             }
         ],
-        getTotal: function(this:Order) {
+        getTotal: function(this:Order):number {
             let result: number = 0;
             this.positions.map(p => {
                 result += p.positionPricePerOne * p.positionAmount;

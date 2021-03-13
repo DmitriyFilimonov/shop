@@ -55,6 +55,18 @@ button:active{
 .decrease:hover, .increase:hover, .delete-button:hover{
     text-shadow: 0 0 2px white;
 }
+.decrease.blocked, .decrease.blocked:active{
+    cursor:initial;
+    padding-left: 6px;
+    border-width: 0px;
+    color: rgba(255, 255, 255, 0.404);
+    background-color: #9f94e356;
+    text-shadow: none;
+    transition: .2s ease;
+}
+.decrease.available{
+    transition: .2s ease;
+}
 .increase{
 line-height: 10%;
 padding-left: 4px;
