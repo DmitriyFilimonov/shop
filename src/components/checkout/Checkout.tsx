@@ -86,7 +86,7 @@ function Checkout() {
     return (
         <div className="table">
             <div className="table-header">
-                <label>Заказ {order.orderNumber}</label>
+                <label>Заказ# {order.orderNumber}</label>
                 <div className="order-general-info">
                     <span><b>Адрес:</b> {order.address}</span>
                     <span><b>Дата:</b> {order.deliveryDate}</span>
