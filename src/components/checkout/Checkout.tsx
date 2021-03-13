@@ -49,6 +49,11 @@ function Checkout() {
         setOrder(Object.assign({}, orderSource));
     }
 
+    const increaseHandler = (positionNumber:number) =>{
+        orderSource.positions[positionNumber].positionAmount++;
+        setOrder(Object.assign({}, orderSource));
+    }
+
     return (
         <div className="table">
             <div className="table-header">
@@ -65,7 +70,8 @@ function Checkout() {
                     order.positions.map(position =>
                     <TableDataRow
                     data={position}
-                    decreaseHandler={decreaseHandler}></TableDataRow>)
+                    decreaseHandler={decreaseHandler}
+                    increaseHandler={increaseHandler}></TableDataRow>)
                 }
             </div>
             <div className="table-footer">
