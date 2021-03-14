@@ -23,8 +23,8 @@ function ModalProofDelete(props: ModalProofDeleteProps) {
             <div className={"modal-window " + (props.modalVisibility)} onClick={stopPropagation}>
                 Вы действительно хотите отказаться от этого товара?
                 <div className="modal-window-footer">
-                    <button className="modal-btn proof-btn" onClick={deletePosition}>Да</button>
-                    <button className="modal-btn cancel-btn" onClick={cancel}>Нет</button>
+                    <button className="modal-btns proof-btn" onClick={deletePosition}>Да</button>
+                    <button className="modal-btns cancel-btn" onClick={cancel}>Нет</button>
                 </div>
             </div>
         </div>

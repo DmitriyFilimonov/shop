@@ -3,31 +3,17 @@
     display: grid;
     grid-template-columns: 40px 280px 70px 95px 80px 65px;
     font-family: 'Montserrat', sans-serif;
-}
-.title{
-    
-}
-.table-row span{
     font-size: 12px;
     font-weight: 500;
 }
-
-.amount{
-    padding-left: 23px;
+.title{
+    font-weight: 900;
 }
-.amount-buttons{
-    display: flex;
-    justify-content: flex-start;
+.amount-col{
+    padding-left: 23px;
 }
 button{
     cursor:pointer;
-}
-.decrease, .increase, .delete-button{
-    border-width:0px;
-    font-size: 20px;
-    width:20px;
-    height:19px;
-    font-weight: bold;
 }
 button, button:active, button:target{
     border-radius: 0px;
@@ -39,22 +25,27 @@ button, button:active, button:target{
 button:active{
     border-width:2px;
 }
-.decrease:active{
-    padding-left: 4px;
+.amount-buttons{
+    display: flex;
+    justify-content: flex-start;
 }
-.increase:active{
-    padding-left: 2px;
-}
-.delete-button:active{
-    padding-left: 4px;
+.decrease, .increase, .delete-button{
+    border-width:0px;
+    font-size: 20px;
+    width:20px;
+    height:19px;
+    font-weight: bold;
 }
 .decrease{
     display: block;
     padding-left: 5px;
     line-height: 5%;
 }
-.decrease:hover, .increase:hover, .delete-button:hover{
-    text-shadow: 0 0 2px white;
+.decrease:active{
+    padding-left: 4px;
+}
+.decrease.available{
+    transition: .2s ease;
 }
 .decrease.blocked, .decrease.blocked:active{
     cursor:initial;
@@ -65,12 +56,12 @@ button:active{
     text-shadow: none;
     transition: .2s ease;
 }
-.decrease.available{
-    transition: .2s ease;
-}
 .increase{
 line-height: 10%;
 padding-left: 4px;
+}
+.increase:active{
+    padding-left: 2px;
 }
 .delete-button{
     height:19px;
@@ -79,4 +70,10 @@ padding-left: 4px;
     font-size: 11px;
     font-weight: 600;
     padding-left: 6px;
+}
+.delete-button:active{
+    padding-left: 4px;
+}
+.decrease:hover, .increase:hover, .delete-button:hover{
+    text-shadow: 0 0 2px white;
 }

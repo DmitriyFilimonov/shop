@@ -26,7 +26,7 @@ function TableDataRow(props: TableDataRowProps) {
         <div className="table-row">
             <span>{props.data.positionNumber}</span>
             <span>{props.data.positionTitle}</span>
-            <span className="amount">{props.data.positionAmount}</span>
+            <span className="amount-col">{props.data.positionAmount}</span>
             <span>{props.data.positionPricePerOne}</span>
             <span className="amount-buttons">
                 <button className={"decrease " + (availability)} onClick={decrease}>-</button>
