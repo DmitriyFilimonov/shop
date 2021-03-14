@@ -3,6 +3,7 @@ import '../TableRows.css';
 
 interface TableDataRowProps {
     data: OrderPosition;
+    renderIndex:number;
     decreaseHandler: (positionNumber: number) => void;
     increaseHandler: (positionNumber: number) => void;
     deleteHandler:(positionNumber: number)=>void;
@@ -24,7 +25,7 @@ function TableDataRow(props: TableDataRowProps) {
     props.data.positionAmount > 1 ? availability = "available" : availability = "blocked";
     return (
         <div className="table-row">
-            <span>{props.data.positionNumber}</span>
+            <span>{props.renderIndex}</span>
             <span>{props.data.positionTitle}</span>
             <span className="amount-col">{props.data.positionAmount}</span>
             <span>{props.data.positionPricePerOne}</span>

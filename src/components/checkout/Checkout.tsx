@@ -45,8 +45,7 @@ const orderSource: Order = {
         });
         return result;
     }
-}
-    ;
+};
 
 let positionForDelete: number;
 
@@ -96,9 +95,10 @@ function Checkout() {
             <div className="table-body">
                 <TableTitleRow></TableTitleRow>
                 {
-                    order.positions.map(position =>
+                    order.positions.map((position, index) =>
                         <TableDataRow
                             key={position.positionNumber}
+                            renderIndex={index+1}
                             data={position}
                             decreaseHandler={decreaseHandler}
                             increaseHandler={increaseHandler}
