@@ -10,7 +10,7 @@ import './Checkout.css';
 const orderSource: Order = {
     orderNumber: 132,
     address: "СПб, пр. Ленина, д. 3, кв. 8",
-    orderDate: (new Date()).toLocaleDateString("en-GB"),
+    orderDate: new Date().toLocaleDateString("en-GB"),
     positions: [
         {
             positionNumber: 1,
@@ -56,7 +56,7 @@ function Checkout() {
 
     const decreaseHandler = (positionNumber: number) => {
         orderSource.positions[positionNumber].positionAmount--;
-        setOrder(Object.assign({}, orderSource));
+        setOrder(Object.assign({},orderSource));
     }
 
     const increaseHandler = (positionNumber: number) => {

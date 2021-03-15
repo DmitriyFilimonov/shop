@@ -9,10 +9,10 @@ interface ModalProofDeleteProps {
 
 function ModalProofDelete(props: ModalProofDeleteProps) {
 
-    function deletePosition(){
+    const deletePosition = () => {
         props.deleteHandler();
     }
-    function cancel(){
+    const cancel = () => {
         props.cancelDeleteHandler();
     }
     const stopPropagation:MouseEventHandler = (e) =>{

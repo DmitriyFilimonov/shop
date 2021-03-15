@@ -12,17 +12,16 @@ interface TableDataRowProps {
 let availability: string;
 
 function TableDataRow(props: TableDataRowProps) {
-    function decrease() {
-        if (props.data.positionAmount > 1)
-            props.decreaseHandler(props.data.positionNumber - 1);
-    }
-    function increase() {
-        props.increaseHandler(props.data.positionNumber - 1);
-    }
-    function deletePosition(){
-        props.deleteHandler(props.data.positionNumber-1);
+    const decrease = () => {
+        props.data.positionAmount > 1 && props.decreaseHandler(props.data.positionNumber - 1);
     }
     props.data.positionAmount > 1 ? availability = "available" : availability = "blocked";
+    const increase = () => {
+        props.increaseHandler(props.data.positionNumber - 1);
+    }
+    const deletePosition = () =>{
+        props.deleteHandler(props.data.positionNumber-1);
+    }
     return (
         <div className="table-row">
             <span>{props.renderIndex}</span>
