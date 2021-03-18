@@ -53,10 +53,12 @@ function Checkout() {
 
     const [order, setOrder] = useState(Object.assign({}, orderSource));
     const [modalVisibility, setModalVisibility] = useState("");
+    const [logicConst, setLogicConst] = useState(true);
 
     const decreaseHandler = (positionNumber: number) => {
         orderSource.positions[positionNumber].positionAmount--;
-        setOrder(Object.assign({},orderSource));
+        console.log(orderSource);
+        setLogicConst(!logicConst);
     }
 
     const increaseHandler = (positionNumber: number) => {
